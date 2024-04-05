@@ -1,11 +1,18 @@
-#include "mainwindow.h"
+#include <QtGlobal>
+#include <QDebug>
 
-#include <QApplication>
+int main() {
+#ifdef Q_OS_WIN
+    qDebug() << "Running on Windows";
+#elif defined(Q_OS_MACOS)
+    qDebug() << "Running on macOS";
+#elif defined(Q_OS_LINUX)
+    qDebug() << "Running on Linux";
+#else
+    qDebug() << "Unknown operating system";
+#endif
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
+    // Other application code...
+
+    return 0;
 }
